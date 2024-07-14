@@ -1,4 +1,10 @@
 <!-- Begin Page content -->
+
+<!-- index.php -->
+<div class="container">
+    <h1>Welcome to the Home Page!</h1>
+</div>
+
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -16,7 +22,7 @@
                     <p class="card-text">
                         <small class="text-muted">
                             Member since <?= date('d F Y', $user['date_created']); ?>
-                        </small>
+                        </small> 
                     </p>
                 </div>
             </div>

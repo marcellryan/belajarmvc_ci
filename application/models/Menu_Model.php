@@ -5,7 +5,9 @@ class Menu_model extends CI_Model
 {
     public function getMenu()
     {
-        return $this->db->get('user_menu')->result_array();
+        // Mengabaikan menu "Management"
+        $query = "SELECT * FROM `user_menu` WHERE `menu` != 'Management'";
+        return $this->db->query($query)->result_array();
     }
 
     public function getMenuByID($id)
@@ -33,21 +35,20 @@ class Menu_model extends CI_Model
 
     public function getSubMenu()
     {
+        // Mengabaikan submenu yang terkait dengan menu "Management"
         $query = "SELECT `user_sub_menu`.*, `user_menu`.`menu`
-                    FROM `user_sub_menu` JOIN `user_menu`
-                    ON `user_sub_menu`.`menu_id` = `user_menu`.`id`
-                    WHERE is_active = '1'
-                ";
+                    FROM `user_sub_menu` 
+                    JOIN `user_menu` ON `user_sub_menu`.`menu_id` = `user_menu`.`id`
+                    WHERE `user_sub_menu`.`is_active` = 1 AND `user_menu`.`menu` != 'Management'";
         return $this->db->query($query)->result_array();
     }
 
     public function getSubMenuByID($id)
     {
         $query = "SELECT `user_sub_menu`.*, `user_menu`.`menu`
-                    FROM `user_sub_menu` JOIN `user_menu`
-                    ON `user_sub_menu`.`menu_id` = `user_menu`.`id`
-                    WHERE is_active = '1' and `user_sub_menu`.`id` = $id
-                ";
+                    FROM `user_sub_menu` 
+                    JOIN `user_menu` ON `user_sub_menu`.`menu_id` = `user_menu`.`id`
+                    WHERE `user_sub_menu`.`is_active` = 1 AND `user_sub_menu`.`id` = $id AND `user_menu`.`menu` != 'Management'";
         return $this->db->query($query)->row_array();
     }
 

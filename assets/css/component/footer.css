@@ -1,0 +1,30 @@
+/* Ensure the body and html take the full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content should take the remaining space */
+.main-content {
+    flex: 1;
+}
+
+/* Footer styling */
+.custom-footer {
+    background: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.custom-footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.custom-footer-text {
+    margin: auto;
+    color: #333333;
+}
